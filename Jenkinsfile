@@ -1,20 +1,13 @@
 pipeline {
     agent any
+    options {
+        // Timeout counter starts AFTER agent is allocated
+        timeout(time: 1, unit: 'SECONDS')
+    }
     stages {
-        stage('Build') {
+        stage('Example') {
             steps {
-                sh 'mvn clean install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo Deploying application...'
-                // 실제 배포 스크립트 추가
+                echo 'Hello World'
             }
         }
     }
